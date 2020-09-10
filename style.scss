@@ -1,0 +1,254 @@
+$nav-height: 150px;
+
+$pink: hsl(322, 100%, 66%);
+$very-pale-cyan: hsl(193, 100%, 96%);
+$very-dark-cyan: hsl(192, 100%, 9%);
+$grayish-blue: hsl(208, 11%, 55%);
+$box-shadow-color: #808d99aa;
+
+@mixin d-flex($orient:row, $wrap:wrap, $justify:flex-start, $align:flex-start) {
+  display: flex;
+  flex-flow: $orient $wrap;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin m-reset {
+  margin:0;
+}
+
+@mixin p-reset {
+  padding: 0;
+}
+
+@mixin box-reset {
+  @include m-reset();
+  @include p-reset();
+}
+
+@mixin h1 {
+  font-size: 40px;
+  font-family: "Poppins", sans-serif;
+}
+
+@mixin h2 {
+  @include h1;
+  font-size: 28px;
+}
+
+@mixin h3 {
+  @include h1;
+  font-size: 32px;
+}
+
+* {
+  box-sizing: border-box;
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  @include box-reset();
+}
+
+// START Shared Styles
+.action-button {
+  *{
+    background-color: white;
+    border: none;
+    border-radius: 30px;
+    height: 60px;
+    width: 200px;
+    -webkit-box-shadow: 0px 0px 7px -1px $box-shadow-color;
+    -moz-box-shadow: 0px 0px 7px -1px $box-shadow-color;
+    box-shadow: 0px 0px 7px -1px $box-shadow-color;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  &.pink {
+    * {
+      background-color: $pink;
+      color: white;
+    }
+  }
+  &.large {
+    * {
+      width: 300px;
+    }
+  }
+}
+
+// END Shared Styles
+
+// START Header styles
+.header {
+  @include d-flex(column, nowrap, flex-start, space-between);
+  width: 100%;
+  height: auto;
+  background: $very-pale-cyan url('../images/bg-hero-desktop.svg');
+
+  > * {
+    width: 100%;
+  }
+}
+
+.nav {
+  @include d-flex(row, nowrap, space-between, center);
+  height: $nav-height;
+  padding: 40px 10%;
+}
+
+.hero {
+  @include d-flex(row, nowrap, space-between, center);
+  height: auto;
+  padding: 40px 10%;
+
+  > * {
+    width: 50%;
+  }
+}
+
+.hero-text {
+  @include d-flex(column, nowrap, space-around, flex-start);
+  padding-right: 10%;
+}
+
+.title {
+  @include h1;
+  @include box-reset;
+}
+// END Header Styles
+
+// START Feature Section Styles
+.feature-blocks {
+  @include d-flex(column, nowrap, flex-start, flex-start);
+  > * {
+    width: 100%;
+    padding: 40px 10%;
+  }
+}
+
+.feature {
+  @include d-flex(row, nowrap, space-around, center);
+  > * {
+    width: 45%;
+  }
+
+  &.reverse {
+    @include d-flex(row-reverse, nowrap, space-around, center);
+  }
+}
+
+.feature-title {
+  @include h2;
+}
+// END Feature Section Styles
+
+// START Call To Action Styles
+.call-to-action {
+  @include d-flex(column, nowrap, stretch, stretch);
+  height: auto;
+}
+
+.white {
+  height: 150px;
+  width: 100%;
+  background-color: white;
+}
+
+.black {
+  height: 110px;
+  width: 100%;
+  background-color: $very-dark-cyan;
+}
+
+.main-call {
+  @include d-flex(column, nowrap, space-around, center);
+  background: white;
+  border-radius: 10px;
+  position: absolute;
+  left: auto;
+  right: auto;
+  margin: 0 auto;
+  padding: 40px 80px;
+  height: auto;
+  width: 80%;
+  left: calc(50vw - 40%);
+  transform: translateY(60px);
+  -webkit-box-shadow: 0px 0px 7px -1px $box-shadow-color;
+  -moz-box-shadow: 0px 0px 7px -1px $box-shadow-color;
+  box-shadow: 0px 0px 7px -1px $box-shadow-color;
+  * {
+    @include box-reset();
+  }
+}
+
+.call-title {
+  @include h3;
+}
+// END Call To Action Styles
+
+// START Footer Styles
+.footer,
+.attribution {
+  @include box-reset();
+  padding: 40px 10%;
+  background-color: $very-dark-cyan;
+  color: white;
+  * {
+    color: white;
+  }
+  a {
+    color: $grayish-blue;
+  }
+}
+
+.footer{
+  padding: 80px 10% 0 10%;
+}
+
+.footer-row {
+  @include d-flex(row, nowrap, space-between, center);
+}
+
+.footer-col {
+  @include d-flex(column, nowrap, flex-start, flex-start);
+  width: 20%;
+  height: 100%;
+
+  &:first-of-type {
+    width: 40%;
+    margin-right: 50px;
+  }
+
+  svg {
+    path {
+      fill: white;
+    }
+  }
+  
+  span {
+    margin-bottom: 30px;
+  }
+}
+
+.icon-container {
+  @include d-flex(row, nowrap, flex-start, center);
+  margin: 10px 0;
+  img {
+    @include box-reset();
+    transform: scale(0.9);
+    margin-right: 5px;
+  }
+  p {
+    @include box-reset();
+  }
+}
+
+.bottom,
+.attribution {
+  @include d-flex(row, nowrap, flex-end, center);
+}
+
+// END Footer Styles
