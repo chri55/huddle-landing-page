@@ -29,6 +29,7 @@ $box-shadow-color: #808d99aa;
 @mixin h1 {
   font-size: 40px;
   font-family: "Poppins", sans-serif;
+  color: $very-dark-cyan;
 }
 
 @mixin h2 {
@@ -169,6 +170,10 @@ body {
   @include h1;
   @include box-reset;
 }
+
+.body {
+  color: $very-dark-cyan;
+}
 // END Header Styles
 
 // START Feature Section Styles
@@ -194,6 +199,10 @@ body {
 
 .feature-title {
   @include h2;
+}
+
+.feature-body {
+  color: $grayish-blue;
 }
 // END Feature Section Styles
 
@@ -312,21 +321,47 @@ body {
     }
   }
 
-  .footer-row img {
-    margin-right: 10px;
-  }
+
 }
 
 .icon-container {
   @include d-flex(row, nowrap, flex-start, center);
-  margin: 10px 0;
+  margin: 20px 0;
   img {
     @include box-reset();
     transform: scale(0.9);
-    margin-right: 5px;
+    margin-right: 20px;
   }
   p {
     @include box-reset();
+  }
+}
+
+.media-link-outline {
+  @include d-flex(row, nowrap, center, center);
+  border: 1px solid white;
+  padding: 5px;
+  height: 50px;
+  width: 50px;
+  margin-right: 15px;
+  border-radius: 25px;
+  transition: 0.3s;
+  cursor: pointer;
+  img {
+    height: 55%;
+    width: auto;
+    @include m-reset();
+    filter: brightness(0) invert(1);
+    transition: 0.3s;
+  }
+  &:hover {
+    //width: 50px;
+    //height: 60px;
+    border-radius: 30px;
+    *{
+      transform: scale(1.2);
+      filter: brightness(0.6) invert(1) sepia(1) hue-rotate(180deg);
+    }
   }
 }
 

@@ -207,8 +207,13 @@ body {
 .title {
   font-size: 40px;
   font-family: "Poppins", sans-serif;
+  color: #00252e;
   margin: 0;
   padding: 0;
+}
+
+.body {
+  color: #00252e;
 }
 
 .feature-blocks {
@@ -270,7 +275,12 @@ body {
 .feature-title {
   font-size: 40px;
   font-family: "Poppins", sans-serif;
+  color: #00252e;
   font-size: 28px;
+}
+
+.feature-body {
+  color: #808d99;
 }
 
 .call-to-action {
@@ -339,6 +349,7 @@ body {
 .call-title {
   font-size: 40px;
   font-family: "Poppins", sans-serif;
+  color: #00252e;
   font-size: 32px;
   margin-bottom: 30px;
 }
@@ -452,10 +463,6 @@ body {
   height: 2px;
 }
 
-.footer-col .footer-row img {
-  margin-right: 10px;
-}
-
 .icon-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -470,7 +477,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 10px 0;
+  margin: 20px 0;
 }
 
 .icon-container img {
@@ -478,12 +485,58 @@ body {
   padding: 0;
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
-  margin-right: 5px;
+  margin-right: 20px;
 }
 
 .icon-container p {
   margin: 0;
   padding: 0;
+}
+
+.media-link-outline {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid white;
+  padding: 5px;
+  height: 50px;
+  width: 50px;
+  margin-right: 15px;
+  border-radius: 25px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.media-link-outline img {
+  height: 55%;
+  width: auto;
+  margin: 0;
+  -webkit-filter: brightness(0) invert(1);
+          filter: brightness(0) invert(1);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.media-link-outline:hover {
+  border-radius: 30px;
+}
+
+.media-link-outline:hover * {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-filter: brightness(0.6) invert(1) sepia(1) hue-rotate(180deg);
+          filter: brightness(0.6) invert(1) sepia(1) hue-rotate(180deg);
 }
 
 .bottom,
@@ -572,6 +625,7 @@ body {
   .title {
     font-size: 40px;
     font-family: "Poppins", sans-serif;
+    color: #00252e;
     font-size: 28px;
   }
   .feature-blocks {
@@ -625,6 +679,7 @@ body {
   .call-title {
     font-size: 40px;
     font-family: "Poppins", sans-serif;
+    color: #00252e;
     font-size: 28px;
     text-align: center;
   }
