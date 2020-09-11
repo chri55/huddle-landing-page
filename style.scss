@@ -41,6 +41,28 @@ $box-shadow-color: #808d99aa;
   font-size: 32px;
 }
 
+@keyframes slide-down-left {
+  from {
+    opacity: 0;
+    transform: translate(50px, -30px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 * {
   box-sizing: border-box;
   font-size: 18px;
@@ -64,6 +86,18 @@ body {
     box-shadow: 0px 0px 7px -1px $box-shadow-color;
     font-size: 14px;
     font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+    user-select: none;
+    outline: none;
+  }
+
+  &:hover {
+    * {
+      -webkit-box-shadow: 0px 0px 20px -1px $box-shadow-color;
+      -moz-box-shadow: 0px 0px 20px -1px $box-shadow-color;
+      box-shadow: 0px 0px 20px -1px $box-shadow-color;
+    }
   }
 
   &.pink {
@@ -107,11 +141,28 @@ body {
   > * {
     width: 50%;
   }
+
+  img {
+    animation-name: slide-down-left;
+    animation-duration: 1.2s;
+    animation-fill-mode: forwards;
+  }
 }
 
 .hero-text {
   @include d-flex(column, nowrap, space-around, flex-start);
   padding-right: 10%;
+  .title {
+    animation-name: slide-in-right;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+  }
+  .body {
+    animation-name: slide-in-right;
+    animation-duration: 0.6s;
+    animation-fill-mode: backwards;
+    animation-delay: 0.3s;
+  }
 }
 
 .title {
@@ -131,6 +182,7 @@ body {
 
 .feature {
   @include d-flex(row, nowrap, space-around, center);
+  margin-bottom: 50px;
   > * {
     width: 45%;
   }
@@ -173,9 +225,9 @@ body {
   margin: 0 auto;
   padding: 40px 80px;
   height: auto;
-  width: 80%;
-  left: calc(50vw - 40%);
-  transform: translateY(60px);
+  width: 60%;
+  left: calc(50vw - 30%);
+  transform: translateY(30px);
   -webkit-box-shadow: 0px 0px 7px -1px $box-shadow-color;
   -moz-box-shadow: 0px 0px 7px -1px $box-shadow-color;
   box-shadow: 0px 0px 7px -1px $box-shadow-color;
@@ -186,6 +238,8 @@ body {
 
 .call-title {
   @include h3;
+  margin-bottom: 30px;
+
 }
 // END Call To Action Styles
 
@@ -220,6 +274,12 @@ body {
   &:first-of-type {
     width: 40%;
     margin-right: 50px;
+    padding-right: 20px;
+  }
+
+  div, 
+  svg {
+    margin-bottom: 40px;
   }
 
   svg {
@@ -229,7 +289,31 @@ body {
   }
   
   span {
+    cursor: pointer;
     margin-bottom: 30px;
+    @include d-flex(column, nowrap);
+
+    &::after {
+      content: "";
+      height: 2px;
+      width: 100%;
+      color: white;
+      background-color: white;
+      transition: 0.2s;
+      transform: scaleX(0);
+      margin: 0 auto;
+    }
+
+    &:hover {
+      &::after {
+        transform: scaleX(1);
+        height: 2px;
+      }
+    }
+  }
+
+  .footer-row img {
+    margin-right: 10px;
   }
 }
 
@@ -249,6 +333,113 @@ body {
 .bottom,
 .attribution {
   @include d-flex(row, nowrap, flex-end, center);
+  font-size: 12px;
+  * {
+    font-size: 12px;
+    margin-left: 5px;
+  }
 }
 
 // END Footer Styles
+
+@media only screen and (max-width: 1200px) {
+  .main-call {
+    width: 80%;
+    left: calc(50vw - 40%);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .action-button:not(.large) {
+    width: 40%;
+    * {
+      width: 100%;
+      height: 60px;
+    }
+  }
+  
+  .header {
+    height: auto;
+  }
+
+  .nav {
+    img {
+      width: 40%;
+      height: auto;
+    }
+  }
+  .hero {
+    @include p-reset();
+    @include d-flex(column, nowrap, flex-start, center);
+    * {
+      text-align: center;
+      width: 90%;
+    }
+  }
+
+  .hero-text {
+    @include p-reset();
+    @include d-flex(column, nowrap, flex-start, center);
+    margin-bottom: 50px;
+  }
+
+  .title {
+    @include h2;
+  }
+
+  .feature-blocks {
+    @include d-flex(column, nowrap, center, center);
+    margin-top: 100px;
+  }
+
+  .feature,
+  .feature.reverse {
+    @include p-reset();
+    @include d-flex(column, nowrap, center, center);
+    width: 90%;
+    margin-bottom: 100px;
+    * {
+      width: 100%;
+      text-align: center;
+    }
+    img {
+      width: 75%;
+    }
+  }
+
+  .main-call {
+    width: 90%;
+    left: calc(50vw - 45%);
+
+  }
+
+  .call-title {
+    @include h2;
+    text-align: center;
+  }
+
+  .footer-row {
+    @include d-flex(column, nowrap, center, center);
+  }
+
+  .footer-col,
+  .footer-col:first-of-type {
+    @include box-reset();
+    height: auto;
+    width: 100%;
+
+    .footer-row {
+      @include d-flex(row, nowrap, space-between, center);
+    }
+  }
+
+  .bottom,
+  .attribution {
+    @include d-flex(row, nowrap, center);
+    *{
+      text-align: center;
+
+    }
+  }
+
+}
